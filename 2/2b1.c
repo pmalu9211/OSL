@@ -51,7 +51,7 @@ int main()
 	bubble_sort(arr, n);
 
 	// Create child process
-	pid_t pid = fork();
+	int pid = fork();
 
 	if (pid == 0) // Child process
 	{
@@ -67,7 +67,9 @@ int main()
 		{
 			printf("args : %s\n", args[i]);
 		}
-		execve("./search", args, NULL);
+		// execve("./search", args, NULL);
+
+		execve("./reverse", args, NULL);
 
 		// last elemnt should be NULL
 		// pass it to the execv

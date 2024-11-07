@@ -9,49 +9,26 @@ void insertion_sort(int array[], int n);
 
 int main()
 {
-  int pid;
-  int i, arr_bubble[MAX], arr_ins[MAX];
-  int num_bubble, num_ins;
 
-  printf("\nENTER THE NUMBER OF ELEMENTS FOR bubble : \n");
-  scanf("%d", &num_bubble);
-  printf("\nENTER THE ELEMENTS : ");
-  for (i = 0; i < num_bubble; i++)
-    scanf("%d", &arr_bubble[i]);
-
-  printf("\nENTER THE NUMBER OF ELEMENTS FOR Insertion : \n");
-  scanf("%d", &num_ins);
-  printf("\nENTER THE ELEMENTS : ");
-  for (i = 0; i < num_ins; i++)
-    scanf("%d", &arr_ins[i]);
-
+    int pid;
+    printf("Start\n");
+  printf("Current pid %d \n",getpid());
   pid = fork();
+  sleep(6);
   if (pid == 0)
   {
     printf("\n I am in child...%d", getpid());
     printf("\n My parent's Id is...%d", getppid());
     sleep(5);
-    bubble_sort(arr_bubble, num_bubble);
-    printf("\nAFTER PERFORMING THE BUBBLE SORT : \n");
-    for (int i = 0; i < num_bubble; i++)
-      printf("%d\t", arr_bubble[i]);
-    printf("\n");
-    printf("\nI (CHILD) COMPLETED MY EXECUTION.\n");
   }
   else
   {
-    printf("\n My parent's Id is...%d", getppid());
+      sleep(10);
     printf("\n I am in Parent...%d", getpid());
     printf("\n Insertion Sorting the array");
-    insertion_sort(arr_ins, num_ins);
-    printf("\nAFTER PERFORMING THE INSERTION SORT : \n");
-    for (int i = 0; i < num_ins; i++)
-      printf("%d\t", arr_ins[i]);
-    printf("\n");
-    printf("I Will be wating for my child to finish... \n");
     wait(NULL);
+    sleep(5);
     exit(0);
-    printf("\nCHILD COMPLETED ITS EXECUTION , NOW I (PARENT) AM FREE TO EXIT.\n");
   }
   return (0);
 }

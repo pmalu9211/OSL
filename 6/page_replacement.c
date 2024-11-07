@@ -88,6 +88,7 @@ void lru(int pages[], int n, int capacity)
 void optimal(int pages[], int n, int capacity)
 {
     int frame[capacity], faults = 0;
+
     for (int i = 0; i < capacity; i++)
         frame[i] = -1;
 
@@ -103,10 +104,12 @@ void optimal(int pages[], int n, int capacity)
                 break;
             }
         }
+        // 2 4 5
+        // 2 4 5 1 2 4 5
 
         if (!found)
         {
-            int replace_index = -1, farthest = i + 1;
+            int replace_index = -1, farthestIndexInUse = i + 1;
 
             for (int j = 0; j < capacity; j++)
             {
@@ -121,9 +124,9 @@ void optimal(int pages[], int n, int capacity)
                     }
                 }
 
-                if (next_use > farthest)
+                if (next_use >= farthestIndexInUse)
                 {
-                    farthest = next_use;
+                    farthestIndexInUse = next_use;
                     replace_index = j;
                 }
 

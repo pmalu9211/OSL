@@ -27,7 +27,7 @@ int main()
         /* Child Process */
         printf("Now in Child Process is Executing ...\n\n");
         printf("Now Child Process is going for Sleeping ...\n\n");
-        sleep(3);
+        sleep(100);
 
         /* 	           Orphan Child's Parent ID is 1                */
 

@@ -1,14 +1,7 @@
-// Zombie process
-//  even after the process is completed it's record
-// is not deleted form the table is called zombie process
-//
-//  We need the parent to stay alive to see it
-//  if parent is dead we OS kills the child
-// defunc
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
 int main()
 {
     int pid;
@@ -24,13 +17,12 @@ int main()
     {
         /* Process Creation Failed ... */
         printf("After Forking, Process Control is now with parent Process ...\n\n");
-        printf("wating for the child process %d", pid);
-        wait(NULL);
+
         printf("Now the Parent Process Running ... \n");
-        // printf("Now parent Process is going for Sleeping ..\n\n");
-        // sleep(10);
-        // printf("\n\nNow parent Process Wakes up ..\n\n");
-        // printf("\n\nNow the Parent Process is in Zombie State ...\n\n");
+        printf("Now parent Process is going for Sleeping ..\n\n");
+        sleep(10);
+        printf("\n\nNow parent Process Wakes up ..\n\n");
+        printf("\n\nNow the Parent Process is in Zombie State ...\n\n");
         while (1)
         {
             /*
